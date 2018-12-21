@@ -36,8 +36,10 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
   devServer: {
-    compress: true,
-    port: 3000
+    host: '127.0.0.1',
+    port: 3000,
+    https: false,
+    disableHostCheck: true
   },
   plugins: [
     new HtmlWebPackPlugin({

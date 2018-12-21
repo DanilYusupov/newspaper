@@ -28,6 +28,9 @@ class App extends React.Component {
               <Board/>
             </Grid.Column>
           </Grid.Row>
+          <Grid.Row>
+            Powered by NewsAPI.org
+          </Grid.Row>
         </Grid>
       </div>
     )
