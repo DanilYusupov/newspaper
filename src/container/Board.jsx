@@ -24,15 +24,9 @@ class Board extends React.Component {
     const {news} = this.state
     return (
       <div>
-        <Grid columns={4} divided>
-          <Grid.Row>
-            <Item.Group divided>
               {news.map((i, index) => (
                 <NewsItem key={index} data={i}/>
               ))}
-            </Item.Group>
-          </Grid.Row>
-        </Grid>
       </div>
     )
   }

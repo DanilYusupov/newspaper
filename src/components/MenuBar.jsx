@@ -4,7 +4,7 @@ import {Menu} from 'semantic-ui-react'
 const names = ['home', 'search', 'lottery', 'about']
 
 const MenuBar = () => (
-  <Menu text>
+  <Menu pointing>
     {names.map(i => (
       <Menu.Item name={i} key={i} onClick={() => console.log(i)} />
     ))}
