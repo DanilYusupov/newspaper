@@ -1,7 +1,7 @@
 import React from 'react'
-import {Grid, Item} from 'semantic-ui-react'
 import NewsItem from '../components/NewsItem'
 import {host, headliners} from "../urls";
+import {Container, Grid} from 'semantic-ui-react'
 
 class Board extends React.Component {
 
@@ -24,13 +24,22 @@ class Board extends React.Component {
     const {news} = this.state
     return (
       <div>
-              {news.map((i, index) => (
-                <NewsItem key={index} data={i}/>
-              ))}
+        <Container>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column>
+                {
+                  news.map((i, index) => (
+                    <NewsItem key={index} data={i}/>
+                  ))
+                }
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Container>
       </div>
     )
   }
-
 }
 
 export default Board
