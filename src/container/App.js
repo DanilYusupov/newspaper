@@ -1,10 +1,19 @@
 import React from 'react'
+import Board from './Board'
+import {Logo} from '../components/Logo'
+import {Footer} from '../components/Footer'
+import MenuBar from '../components/MenuBar'
 
 class App extends React.Component {
 
   render() {
     return (
-      <h1>Hello World!</h1>
+      <div>
+        <Logo/>
+        <MenuBar/>
+        <Board/>
+        <Footer/>
+      </div>
     )
   }
 

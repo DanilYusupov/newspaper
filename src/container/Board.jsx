@@ -1,0 +1,45 @@
+import React from 'react'
+import NewsItem from '../components/NewsItem'
+import {host, headliners} from "../urls";
+import {Container, Grid} from 'semantic-ui-react'
+
+class Board extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      news: [],
+      count: 0,
+    }
+  }
+
+  componentDidMount() {
+    const country = 'us'
+    fetch(`${host}${headliners}${country}&apiKey=44e86b33c2e34200be71cd982fb9d981`)
+      .then(response => response.json())
+      .then(data => this.setState({news: data.articles, count: data.totalResults}))
+  }
+
+  render() {
+    const {news} = this.state
+    return (
+      <div>
+        <Container>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column>
+                {
+                  news.map((i, index) => (
+                    <NewsItem key={index} data={i}/>
+                  ))
+                }
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Container>
+      </div>
+    )
+  }
+}
+
+export default Board
