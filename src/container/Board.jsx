@@ -16,12 +16,17 @@ class Board extends React.Component {
   }
 
   componentDidMount() {
-    this.getData(`${host}${headliners}?country=us&pageSize=${pageSize}&page=${this.state.activePage}&apiKey=${key}`)
+    this.getData(`${host}${headliners}?country=${this.props.country}&pageSize=${pageSize}&page=${this.state.activePage}&apiKey=${key}`)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ loading: true })
+    this.getData(`${host}${headliners}?country=${nextProps.country}&pageSize=${pageSize}&page=${this.state.activePage}&apiKey=${key}`)
   }
 
   handlePageChange = (e, { activePage }) => {
     this.setState({activePage: activePage, loading: true })
-    this.getData(`${host}${headliners}?country=us&pageSize=${pageSize}&page=${this.state.activePage}&apiKey=${key}`)
+    this.getData(`${host}${headliners}?country=${this.props.country}&pageSize=${pageSize}&page=${this.state.activePage}&apiKey=${key}`)
   }
 
   getData = url => {

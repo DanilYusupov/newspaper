@@ -8,12 +8,12 @@ class NewsItem extends React.Component {
     const img = data.urlToImage ? data.urlToImage : '../../images/square-image.png'
     return (
       <div>
-        <Segment raised>
+        <Segment raised style={{
+          marginBottom: '2em',
+          backgroundColor: '#ffffff',
+        }}>
           <Item.Group>
-            <Item style={{
-              marginBottom: 2 + 'em',
-              backgroundColor: '#ffffff',
-            }}>
+            <Item>
               <Item.Image src={img} onClick={this.handleOpen}
                           style={{
                             minHeight: '100%',
