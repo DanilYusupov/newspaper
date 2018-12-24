@@ -1,7 +1,7 @@
 import React from 'react'
-import NewsItem from '../components/NewsItem'
-import { host, headliners } from '../urls';
-import { Container, Grid, Segment, Dimmer, Loader, Image } from 'semantic-ui-react'
+import NewsList from '../components/NewsList'
+import Loading from '../components/Loading'
+import { host, headliners, key, pageSize } from '../urls';
 
 class Board extends React.Component {
 
@@ -10,48 +10,36 @@ class Board extends React.Component {
     this.state = {
       news: [],
       count: 0,
+      activePage: 1,
       loading: true,
     }
   }
 
   componentDidMount() {
-    const country = 'us'
-    fetch(`${host}${headliners}${country}&apiKey=44e86b33c2e34200be71cd982fb9d981`)
+    this.getData(`${host}${headliners}?country=us&pageSize=${pageSize}&page=${this.state.activePage}&apiKey=${key}`)
+  }
+
+  handlePageChange = (e, { activePage }) => {
+    this.setState({activePage: activePage, loading: true })
+    this.getData(`${host}${headliners}?country=us&pageSize=${pageSize}&page=${this.state.activePage}&apiKey=${key}`)
+  }
+
+  getData = url => {
+    fetch(url)
       .then(response => response.json())
       .then(data => this.setState({ news: data.articles, count: data.totalResults, loading: false }))
   }
 
   render() {
-    const { news, loading } = this.state
-    return !loading ? (
-      <div>
-        <Container>
-          <Grid>
-            <Grid.Row>
-              <Grid.Column>
-                {
-                  news.map((i, index) => (
-                    <NewsItem key={index} data={i}/>
-                  ))
-                }
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Container>
-      </div>
-    ) : (
-      <Container>
-        <Segment>
-          <Dimmer active>
-            <Loader indeterminate>Preparing Files</Loader>
-          </Dimmer>
-
-          <Image src='../../images/short-paragraph.png'/>
-        </Segment>
-      </Container>
-    );
+    const {news} = this.state
+    console.log(`active page ${this.state.activePage}\n last title ${news ? news[9] : 'none'}`)
+    const pages = this.state.count / pageSize
+    return !this.state.loading ? <NewsList
+      data={this.state}
+      pageSize={pages}
+      handlePageChange={this.handlePageChange}
+    /> : <Loading/>
   }
 }
-
 
 export default Board

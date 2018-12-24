@@ -4,6 +4,7 @@ import {Logo} from '../components/Logo'
 import {Footer} from '../components/Footer'
 import MenuBar from '../components/MenuBar'
 
+// todo: Create eslint check from airbnb code style!
 class App extends React.Component {
 
   render() {
