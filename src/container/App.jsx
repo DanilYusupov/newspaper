@@ -1,36 +1,34 @@
 import React from 'react'
 import Board from './Board'
-import { Logo } from '../components/Logo'
-import { Footer } from '../components/Footer'
+import SearchBar from './SearchBar'
+import {Logo} from '../components/Logo'
+import {Footer} from '../components/Footer'
 import MenuBar from '../components/MenuBar'
+import {Route, BrowserRouter as Router} from 'react-router-dom'
 
 class App extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      country: 'us',
-    }
+      country: 'us'
+    };
     this.selectCountry = this.selectCountry.bind(this)
   }
 
   selectCountry = country => {
-    this.setState({ country })
+    this.setState({country})
   }
 
   render() {
     return (
-      <div>
+      <Router>
         <Logo/>
-        <MenuBar
-          selectCountry={this.selectCountry}
-          country={this.state.country}
-        />
-        <Board
-          country={this.state.country}
-        />
+        <MenuBar selectCountry={this.selectCountry} country={this.state.country} />
+        <Route exact={true} path={['/', '/home']} render={() => (<Board country={this.state.country}/>)}/>
+        <Route path='/search' component={SearchBar} />
         <Footer/>
-      </div>
+      </Router>
     )
   }
 
