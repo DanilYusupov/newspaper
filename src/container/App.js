@@ -12,6 +12,7 @@ class App extends React.Component {
     this.state = {
       country: 'us',
     }
+    this.selectCountry = this.selectCountry.bind(this)
   }
 
   selectCountry = country => {

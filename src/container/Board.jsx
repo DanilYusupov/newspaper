@@ -13,6 +13,7 @@ class Board extends React.Component {
       activePage: 1,
       loading: true,
     }
+    this.handlePageChange = this.handlePageChange.bind(this)
   }
 
   componentDidMount() {
@@ -26,7 +27,7 @@ class Board extends React.Component {
 
   handlePageChange = (e, { activePage }) => {
     this.setState({activePage: activePage, loading: true })
-    this.getData(`${host}${headliners}?country=${this.props.country}&pageSize=${pageSize}&page=${this.state.activePage}&apiKey=${key}`)
+    this.getData(`${host}${headliners}?country=${this.props.country}&pageSize=${pageSize}&page=${activePage}&apiKey=${key}`)
   }
 
   getData = url => {
@@ -36,14 +37,14 @@ class Board extends React.Component {
   }
 
   render() {
-    const {news} = this.state
-    console.log(`active page ${this.state.activePage}\n last title ${news ? news[9] : 'none'}`)
     const pages = this.state.count / pageSize
-    return !this.state.loading ? <NewsList
+    return !this.state.loading ?
+      <NewsList
       data={this.state}
       pageSize={pages}
       handlePageChange={this.handlePageChange}
-    /> : <Loading/>
+    /> :
+      <Loading/>
   }
 }
 

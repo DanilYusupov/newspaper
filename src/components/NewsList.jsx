@@ -5,7 +5,6 @@ import { Container, Grid, Pagination } from 'semantic-ui-react'
 class NewsList extends React.Component{
     render() {
     const { news, activePage } = this.props.data
-      console.log(`render in ${activePage} page`)
     return (
       <Container>
         <Grid>
