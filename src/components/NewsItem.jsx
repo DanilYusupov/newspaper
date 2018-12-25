@@ -1,5 +1,11 @@
 import React from 'react'
-import { Item, Label, Segment} from 'semantic-ui-react'
+import { Item, Label, Segment, Image, Loader } from 'semantic-ui-react'
+
+const imageStyle = {
+  maxHeight: '100%',
+  overflow: 'hidden',
+  objectFit: 'cover',
+}
 
 class NewsItem extends React.Component {
 
@@ -14,12 +20,7 @@ class NewsItem extends React.Component {
         }}>
           <Item.Group>
             <Item>
-              <Item.Image src={img} onClick={this.handleOpen}
-                          style={{
-                            minHeight: '100%',
-                            overflow: 'hidden',
-                            objectFit: 'cover',
-                          }}/>
+              <Item.Image verticalAlign='middle' src={img} style={{ imageStyle }}/>
               <Item.Content>
                 <Item.Header as='a' href={data.url}>{data.title}</Item.Header>
                 <Item.Meta>

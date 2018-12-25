@@ -1,6 +1,6 @@
 export const host = 'https://newsapi.org/v2/'
-//Usage: https://newsapi.org/v2/top-headlines?country=us&apiKey=API_KEY
-//Usage: https://newsapi.org/v2/everything?q=bitcoin&apiKey=API_KEY
+// Usage: https://newsapi.org/v2/top-headlines?country=us&apiKey=API_KEY
+// Usage: https://newsapi.org/v2/everything?q=bitcoin&apiKey=API_KEY
 
 export const headliners = 'top-headlines'
 export const everything = 'everything'

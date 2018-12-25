@@ -1,7 +1,7 @@
 import React from 'react'
 import NewsList from '../components/NewsList'
 import Loading from '../components/Loading'
-import { host, headliners, key, pageSize } from '../urls';
+import { host, headliners, key, pageSize } from '../urls'
 
 class Board extends React.Component {
 

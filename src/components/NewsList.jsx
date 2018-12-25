@@ -2,8 +2,8 @@ import React from 'react'
 import NewsItem from '../components/NewsItem'
 import { Container, Grid, Pagination } from 'semantic-ui-react'
 
-class NewsList extends React.Component{
-    render() {
+class NewsList extends React.Component {
+  render() {
     const { news, activePage } = this.props.data
     return (
       <Container>
