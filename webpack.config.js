@@ -1,5 +1,5 @@
 const path = require('path')
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   module: {
@@ -7,14 +7,14 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         include: path.resolve(__dirname, './src')
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader"
+            loader: 'html-loader'
           }
         ]
       },
@@ -33,7 +33,7 @@ module.exports = {
       path.resolve(__dirname, './src'),
       'node_modules'
     ],
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx']
   },
   devServer: {
     host: '127.0.0.1',
@@ -47,4 +47,4 @@ module.exports = {
       filename: 'index.html'
     })
   ]
-};
+}
