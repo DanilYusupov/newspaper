@@ -11,8 +11,8 @@ class NewsList extends React.Component {
           <Grid.Row>
             <Grid.Column>
               {
-                news.map((i, index) => (
-                  <NewsItem key={index} data={i}/>
+                news.map((i) => (
+                  <NewsItem key={i.url} data={i}/>
                 ))
               }
             </Grid.Column>

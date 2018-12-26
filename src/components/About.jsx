@@ -41,7 +41,7 @@ const About = () => (
         Who am I? <Image circular src='../../images/Danil.jpg'/>
       </Header>
       <p>
-        My name in Danil Yusupov and I'm Junior Software developer. This is my educational task. I hope, that in
+        My name is Danil Yusupov and I'm Junior Software developer. This is my educational task. I hope, that in
         future I'll return to this app and I'll be thankful to my past me...
       </p>
     </Segment>
