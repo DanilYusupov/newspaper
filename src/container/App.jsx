@@ -5,6 +5,7 @@ import {Logo} from '../components/Logo'
 import {Footer} from '../components/Footer'
 import MenuBar from '../components/MenuBar'
 import Lottery from '../components/Lottery'
+import About from '../components/About'
 import {Route, BrowserRouter as Router} from 'react-router-dom'
 
 class App extends React.Component {
@@ -29,6 +30,7 @@ class App extends React.Component {
         <Route exact={true} path={['/', '/home']} render={() => (<Board country={this.state.country}/>)}/>
         <Route path='/search' component={SearchBar}/>
         <Route path='/lottery' component={Lottery}/>
+        <Route path='/about' component={About}/>
         <Footer/>
       </Router>
     )
