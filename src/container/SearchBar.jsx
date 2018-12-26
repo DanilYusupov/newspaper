@@ -1,5 +1,6 @@
 import React from 'react'
 import SearchPanel from '../components/SearchPanel'
+import Error from '../components/Error'
 import {host, everything, key, pageSize} from '../urls'
 
 class SearchBar extends React.Component {
@@ -26,12 +27,14 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    const {count, news} = this.state
-    const pages = count / pageSize
-    return <SearchPanel
-      callback={this.handleSearch}
-      results={news}
-    />
+    const {news} = this.state
+    const {error} = this.props
+    return error === null ?
+      <SearchPanel
+        callback={this.handleSearch}
+        results={news}
+      /> :
+      <Error error={error}/>
   }
 }
 
