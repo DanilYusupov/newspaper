@@ -4,6 +4,7 @@ import SearchBar from './SearchBar'
 import {Logo} from '../components/Logo'
 import {Footer} from '../components/Footer'
 import MenuBar from '../components/MenuBar'
+import Lottery from '../components/Lottery'
 import {Route, BrowserRouter as Router} from 'react-router-dom'
 
 class App extends React.Component {
@@ -24,9 +25,10 @@ class App extends React.Component {
     return (
       <Router>
         <Logo/>
-        <MenuBar selectCountry={this.selectCountry} country={this.state.country} />
+        <MenuBar selectCountry={this.selectCountry} country={this.state.country} active={window.location.pathname}/>
         <Route exact={true} path={['/', '/home']} render={() => (<Board country={this.state.country}/>)}/>
-        <Route path='/search' component={SearchBar} />
+        <Route path='/search' component={SearchBar}/>
+        <Route path='/lottery' component={Lottery}/>
         <Footer/>
       </Router>
     )
