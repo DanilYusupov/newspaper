@@ -1,6 +1,7 @@
 import React from 'react'
 import NewsList from '../components/NewsList'
 import Loading from '../components/Loading'
+import Error from '../components/Error'
 import { host, headliners, key, pageSize } from '../urls'
 
 class Board extends React.Component {
@@ -21,6 +22,9 @@ class Board extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if(this.props === nextProps) {
+      return
+    }
     this.setState({ loading: true })
     this.getData(`${host}${headliners}?country=${nextProps.country}&pageSize=${pageSize}&page=${this.state.activePage}&apiKey=${key}`)
   }
@@ -37,14 +41,17 @@ class Board extends React.Component {
   }
 
   render() {
-    const pages = this.state.count / pageSize
-    return !this.state.loading ?
+    const {count, loading} = this.state
+    const {error} = this.props
+    const pages = count / pageSize
+    return error === null ? (!loading ?
       <NewsList
       data={this.state}
       pageSize={pages}
       handlePageChange={this.handlePageChange}
     /> :
-      <Loading/>
+      <Loading/>) :
+      <Error error={error}/>
   }
 }
 
