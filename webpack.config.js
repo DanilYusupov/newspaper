@@ -47,5 +47,8 @@ module.exports = {
       template: './templates/index.html',
       filename: 'index.html'
     })
-  ]
+  ],
+  output: {
+    chunkFilename: '[name].[chunkhash].js'
+  }
 }

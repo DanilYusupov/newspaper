@@ -1,8 +1,26 @@
 import React from 'react'
-import NewsList from '../components/NewsList'
-import Loading from '../components/Loading'
-import Error from '../components/Error'
-import { host, headliners, key, pageSize } from '../urls'
+import Loadable from 'react-loadable'
+import LoadingComponent from '../components/LoadingComponent'
+import { host, headliners, key, pageSize } from '../js/urls'
+
+// Dynamics imports
+
+const NewsList = Loadable({
+  loader: () => import('../components/NewsList'),
+  loading: () => <LoadingComponent/>,
+})
+
+const Loading = Loadable({
+  loader: () => import('../components/Loading'),
+  loading: () => <LoadingComponent/>,
+})
+
+const Error = Loadable({
+  loader: () => import('../components/Error'),
+  loading: () => <LoadingComponent/>,
+})
+
+// Board container
 
 class Board extends React.Component {
 

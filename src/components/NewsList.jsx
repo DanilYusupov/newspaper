@@ -1,6 +1,16 @@
 import React from 'react'
-import NewsItem from '../components/NewsItem'
 import { Container, Grid, Pagination } from 'semantic-ui-react'
+import Loadable from 'react-loadable'
+import LoadingComponent from './LoadingComponent'
+
+// Dynamic imports
+
+const NewsItem = Loadable({
+  loader: () => import('../components/NewsItem'),
+  loading: () => <LoadingComponent/>,
+})
+
+// NewsList component
 
 class NewsList extends React.Component {
   render() {

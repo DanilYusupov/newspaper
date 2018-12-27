@@ -1,7 +1,21 @@
 import React from 'react'
-import SearchPanel from '../components/SearchPanel'
-import Error from '../components/Error'
-import {host, everything, key, pageSize} from '../urls'
+import Loadable from 'react-loadable'
+import LoadingComponent from '../components/LoadingComponent'
+import {host, everything, key, pageSize} from '../js/urls'
+
+// Dynamic imports
+
+const SearchPanel = Loadable({
+  loader: () => import('../components/SearchPanel'),
+  loading: () => <LoadingComponent/>,
+})
+
+const Error = Loadable({
+  loader: () => import('../components/Error'),
+  loading: () => <LoadingComponent/>,
+})
+
+// SearchBar container
 
 class SearchBar extends React.Component {
 

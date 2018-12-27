@@ -1,6 +1,16 @@
 import React from 'react'
-import NewsItem from './NewsItem'
 import {Container, Segment, Header, Icon, Search} from 'semantic-ui-react'
+import Loadable from 'react-loadable'
+import LoadingComponent from './LoadingComponent'
+
+// Dynamic imports
+
+const NewsItem = Loadable({
+  loader: () => import('../components/NewsItem'),
+  loading: () => <LoadingComponent/>,
+})
+
+// Search panel component
 
 const SearchPanel = ({callback, results}) => (
   <Container>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Item, Label, Segment, Image, Loader } from 'semantic-ui-react'
+import { Item, Label, Segment} from 'semantic-ui-react'
 
 const imageStyle = {
   maxHeight: '100%',

@@ -1,13 +1,47 @@
 import React from 'react'
-import Board from './Board'
-import SearchBar from './SearchBar'
-import {Logo} from '../components/Logo'
-import {Footer} from '../components/Footer'
-import MenuBar from '../components/MenuBar'
-import Lottery from '../components/Lottery'
-import About from '../components/About'
+import Loadable from 'react-loadable'
+import LoadingComponent from '../components/LoadingComponent'
 import {Route, BrowserRouter as Router} from 'react-router-dom'
-import {host, headliners, key} from '../urls'
+import {host, headliners, key} from '../js/urls'
+
+// Initializing components with dynamic import
+
+const Logo = Loadable({
+  loader: () => import('../components/Logo'),
+  loading: () => <LoadingComponent/>,
+})
+
+const MenuBar = Loadable({
+  loader: () => import('../components/MenuBar'),
+  loading: () => <LoadingComponent/>,
+})
+
+const Board = Loadable({
+  loader: () => import('./Board'),
+  loading: () => <LoadingComponent/>,
+})
+
+const SearchBar = Loadable({
+  loader: () => import('./SearchBar'),
+  loading: () => <LoadingComponent/>,
+})
+
+const Lottery = Loadable({
+  loader: () => import('../components/Lottery'),
+  loading: () => <LoadingComponent/>,
+})
+
+const About = Loadable({
+  loader: () => import('../components/About'),
+  loading: () => <LoadingComponent/>,
+})
+
+const Footer = Loadable({
+  loader: () => import('../components/Footer'),
+  loading: () => <LoadingComponent/>,
+})
+
+// Main App component
 
 class App extends React.Component {
 
