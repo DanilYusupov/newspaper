@@ -1,7 +1,7 @@
 import React from 'react'
 import { Segment, Container, Grid, List, Header } from 'semantic-ui-react'
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <Container>
       <Segment vertical style={{ padding: '5em 0em', marginTop: '1.5em', marginLeft: '2em' }}>
@@ -25,3 +25,5 @@ export const Footer = () => {
     </Container>
   )
 }
+
+export default Footer

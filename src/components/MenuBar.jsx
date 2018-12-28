@@ -1,6 +1,6 @@
 import React from 'react'
 import {Menu, Container, Dropdown, Flag, Button} from 'semantic-ui-react'
-import {countries} from '../countries'
+import {countries} from '../js/countries'
 import {Link} from 'react-router-dom'
 
 const names = ['home', 'search', 'lottery', 'about']

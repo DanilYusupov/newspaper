@@ -1,7 +1,21 @@
 import React from 'react'
-import SearchPanel from '../components/SearchPanel'
-import Error from '../components/Error'
-import {host, everything, key, pageSize} from '../urls'
+import Loadable from 'react-loadable'
+import LoadingComponent from '../components/LoadingComponent'
+import {host, everything, key, pageSize} from '../js/urls'
+
+// Dynamic imports
+
+const SearchPanel = Loadable({
+  loader: () => import('../components/SearchPanel'),
+  loading: () => <LoadingComponent/>
+})
+
+const Error = Loadable({
+  loader: () => import('../components/Error'),
+  loading: () => <LoadingComponent/>
+})
+
+// SearchBar container
 
 class SearchBar extends React.Component {
 
@@ -10,7 +24,8 @@ class SearchBar extends React.Component {
     this.state = {
       news: [],
       count: 0,
-      activePage: 1
+      activePage: 1,
+      error: null
     }
     this.handleSearch = this.handleSearch.bind(this)
   }
@@ -22,13 +37,24 @@ class SearchBar extends React.Component {
 
   getData = url => {
     fetch(url)
-      .then(response => response.json())
+      .then(response => {
+        switch (response.status) {
+          case 500:
+            this.setState({error: 'There is a problems in external API. Call https://newsapi.org/ support.'})
+            return Promise.reject(response.body)
+          case 401:
+            this.setState({error: 'You have no access to https://newsapi.org/ Check Your API key.'})
+            return Promise.reject(response.body)
+          default:
+            return response.json()
+        }
+      })
       .then(data => this.setState({news: data.articles, count: data.totalResults}))
+      .catch(e => this.setState({error: e.message()}))
   }
 
   render() {
-    const {news} = this.state
-    const {error} = this.props
+    const {news, error} = this.state
     return error === null ?
       <SearchPanel
         callback={this.handleSearch}

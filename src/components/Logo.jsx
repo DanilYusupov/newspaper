@@ -1,7 +1,7 @@
 import React from 'react'
 import {Container, Header, Icon} from 'semantic-ui-react'
 
-export const Logo = () => {
+const Logo = () => {
   return (
     <Container>
       <Header as='h2' icon style={{
@@ -15,3 +15,5 @@ export const Logo = () => {
     </Container>
   )
 }
+
+export default Logo
